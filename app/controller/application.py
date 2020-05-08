@@ -12,7 +12,7 @@ def index():
 def getUser():
     name = request.form.get("user")
     url = f'https://bio.torre.co/api/bios/{name}'
-    data = requests.get("https://bio.torre.co/api/bios/vimuriel")
+    data = requests.get(url)
     return render_template("profile.html", data=url)
 
 @app.route("/perfil", methods=["POST"])
