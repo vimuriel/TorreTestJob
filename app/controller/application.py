@@ -19,7 +19,7 @@ def getUser():
 def perfil():
     name = request.form.get("name")
     url = f'https://bio.torre.co/api/bios/{name}'
-    data = requests.get("https://bio.torre.co/api/bios/vimuriel")
+    data = requests.get(url)
     perfil =data.json()
     skills = perfil['strengths']
     lista = " "
