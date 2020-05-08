@@ -12,7 +12,23 @@ def index():
 def getUser():
     name = request.form.get("user")
     url = f'https://bio.torre.co/api/bios/{name}'
-    data = requests.get(url)
-    return render_template("profile.html", data=data.json())
+    data = requests.get("https://bio.torre.co/api/bios/vimuriel")
+    return render_template("profile.html", data=url)
+
+@app.route("/perfil", methods=["POST"])
+def perfil():
+    name = request.form.get("name")
+    url = f'https://bio.torre.co/api/bios/{name}'
+    data = requests.get("https://bio.torre.co/api/bios/vimuriel")
+    perfil =data.json()
+    skills = perfil['strengths']
+    lista = " "
+    for skill in skills:
+        lista = f"{lista} - {skill['name']}"
+
+    experiences = perfil['jobs']
+    education = perfil['education']
+
+    return render_template("profile.html", data=data.json() ,skills=lista, experiences=experiences, education=education)
 
 

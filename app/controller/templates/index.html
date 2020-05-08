@@ -1,12 +1,21 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    First Page
+
+    <div class="container-sm">
+       <h1>Consulta tu perfil</h1>
+    </div>
+
 {% endblock %}
 
 {% block body %}
-    <form action="{{ url_for('getUser') }}" method="post">
-        <input type="text" user="user" placeholder="Enter Your username">
-        <button>Submit</button>
-    </form>
+    <div class="container-lg">
+        <form action="{{ url_for('perfil') }}" method="post">
+          <div class="form-group">
+            <label >Nombre de usuario</label>
+            <input type="text" name="name" placeholder="Nombre de usuario">
+          </div>
+          <button type="submit" class="btn btn-light">Consultar</button>
+        </form>
+    </div>
 {% endblock %}

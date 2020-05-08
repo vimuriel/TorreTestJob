@@ -1,9 +1,85 @@
 {% extends "layout.html" %}
 
 {% block heading %}
-    DATOS DE PERFIL
+
 {% endblock %}
 
 {% block body %}
-  <p>{{ data }}</p>
+
+<div class="container-lg" style="background-color:#fff;">
+    <div class="row"  style="padding-top:20px">
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+              <img src="https://starrgate.s3.amazonaws.com:443/users/c63e464b6faed68a6448e1ca564c0a04c63a4bb3/profile_u9560ud.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="mt-0">{{ data['person']['name'] }}</h5>
+                  <p class="card-text">{{ data['person']['professionalHeadline'] }}</p>
+              </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+          <p class="card-text">{{ data['person']['summaryOfBio'] }}</p>
+        </div>
+    </div>
+
+
+
+    <div class="row"  style="padding-top:20px">
+    <div class="card bg-light mb-12" >
+      <div class="card-header">Habilidades</div>
+      <div class="card-body">
+        <p class="card-text">{{skills}}</p>
+      </div>
+    </div>
+    </div>
+
+
+    <div class="row" style="padding-top:20px">
+
+      <div class="col-lg-6">
+          <div class="p-3 mb-2 bg-dark text-white"><h3 class="mt-0">Experiencia profesional</h3></div>
+
+          {%for exp in experiences %}
+             <div >
+              <div class="card-body">
+                <h4 class="mb-1">{{ exp['organizations'][0]['name'] }}</h4>
+                <span  style="font-size:12px"> <p class="card-text"> {{ exp['fromMonth']}} de {{exp['fromYear']}} - {{exp['toMonth']}} de {{exp['toYear'] }} </p></span>
+                <h5 class="card-title">{{ exp['name'] }}</h5>
+              </div>
+            </div>
+          {% endfor %}
+      </div>
+
+      <div class="col-lg-6">
+       <div class="p-3 mb-2 bg-dark text-white"><h3 class="mt-0">Educación</h3></div>
+      {%for edu in education %}
+         <div >
+          <div class="card-body">
+            <h4 class="mb-1">{{ edu['organizations'][0]['name'] }}</h4>
+            <span  style="font-size:12px"> <p class="card-text"> {{ edu['fromMonth']}} de {{edu['fromYear']}} - {{edu['toMonth']}} de {{edu['toYear'] }} </p></span>
+            <h5 class="card-title">{{ edu['name'] }}</h5>
+          </div>
+        </div>
+      {% endfor %}
+
+       <div class="p-3 mb-2 bg-dark text-white"><h3 class="mt-0">Lenguajes</h3></div>
+      {%for lang in data['languages'] %}
+         <div >
+          <div class="card-body">
+            <h4 class="mb-1">{{ lang['language']}}</h4>
+            <h5 class="card-title">{{ lang['fluency'] }}</h5>
+          </div>
+        </div>
+      {% endfor %}
+
+      </div>
+    </div>
+
+
+</div>
+
+
+
+
+
 {% endblock %}
